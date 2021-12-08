@@ -1,12 +1,24 @@
 package com.interview;
 
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
-        for(int i = 1; i <= 100; i++) {
-            if (i % 3 == 0) System.out.println("Fizz");
-            if (i % 5 == 0) System.out.println("Buzz");
-            if (i % 3 != 0 && i % 5 != 0) System.out.println(i);
+        prepareOutput(Map.of(3, "Fizz", 5, "Buzz"));
+    }
+
+    private static void prepareOutput(Map<Integer, String> params) {
+
+        for (int i = 1; i<= 100; i++) {
+            int tempI = i;
+            params.forEach((key, value) -> {
+                if (tempI % key == 0) {
+                    System.out.println(value);
+                } else {
+                    System.out.println(tempI);
+                }
+            });
         }
     }
 }
